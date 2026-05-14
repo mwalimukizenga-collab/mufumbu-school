@@ -6,6 +6,7 @@ import {
   ClipboardList, BarChart2, LogOut, Menu, X, ChevronRight, ListChecks,
   KeyRound, BarChart3, FileCheck, FileText,
 } from 'lucide-react'
+import DashboardOverview from './DashboardOverview'
 import DashboardSubjects from './DashboardSubjects'
 import DashboardStudents from './DashboardStudents'
 import DashboardAssignment from './DashboardAssignment'
@@ -48,25 +49,19 @@ const SECTIONS = {
   ],
 }
 
-function SectionContent({ id }) {
+function SectionContent({ id, setActive }) {
   switch (id) {
+    case 'overview':         return <DashboardOverview onNavigate={setActive} />
     case 'subjects':         return <DashboardSubjects />
     case 'students':         return <DashboardStudents />
     case 'student_subjects': return <DashboardAssignment />
     case 'teachers':         return <DashboardTeachers />
-    case 'topics':            return <DashboardTopics />
-    case 'progress':          return <DashboardProgress />
-    case 'exams':             return <DashboardExams />
-    case 'marks':             return <DashboardExamMarks />
-    case 'results':           return <DashboardResults />
-    case 'password':          return <DashboardChangePassword />
-    case 'overview':
-      return (
-        <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">Overview</h2>
-          <p className="text-gray-500 text-sm">Dashboard overview coming soon.</p>
-        </div>
-      )
+    case 'topics':           return <DashboardTopics />
+    case 'progress':         return <DashboardProgress />
+    case 'exams':            return <DashboardExams />
+    case 'marks':            return <DashboardExamMarks />
+    case 'results':          return <DashboardResults />
+    case 'password':         return <DashboardChangePassword />
     default:
       return (
         <div className="space-y-4">
@@ -193,7 +188,7 @@ export default function Dashboard() {
         {/* Page content */}
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-5xl mx-auto px-4 py-6 lg:px-8">
-            <SectionContent id={active} />
+            <SectionContent id={active} setActive={setActive} />
           </div>
         </main>
       </div>

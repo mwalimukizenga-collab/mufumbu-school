@@ -138,6 +138,7 @@ CREATE TABLE IF NOT EXISTS public.exam_results (
   exam_id          integer REFERENCES public.exams(id)    ON DELETE CASCADE,
   theory_score     real CHECK (theory_score  >= 0 AND theory_score  <= 100),
   practical_score  real CHECK (practical_score >= 0 AND practical_score <= 50),
+  is_absent        boolean NOT NULL DEFAULT false,
   remarks          text,
   entered_by       uuid REFERENCES public.profiles(id) ON DELETE SET NULL,
   created_at       timestamptz DEFAULT now(),

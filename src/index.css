@@ -29,3 +29,15 @@ body {
 .ticker-track:hover {
   animation-play-state: paused;
 }
+
+/* ── Print styles ────────────────────────────────────────────────── */
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  .no-print { display: none !important; }
+  body { background: white !important; }
+  .print-area { display: block !important; }
+  .print-section { page-break-inside: avoid; break-inside: avoid; }
+  .overflow-x-auto { overflow: visible !important; }
+  table { font-size: 9px !important; }
+  th, td { padding: 2px 4px !important; }
+}
